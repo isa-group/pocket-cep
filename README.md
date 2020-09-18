@@ -51,4 +51,14 @@ npx newman run simpleExample/PocketCEPTesting.postman_collection.json
 Postman collection used in the testing part: [Postman Collection](https://documenter.getpostman.com/view/9546113/T1DmEyqo).
 
 ### Performance Testing
+
 In case you want to perform a performance testing, you can follow the steps in this [file](https://github.com/JsAntoPe/Pocket-CEP/blob/master/performance.md).
+
+### Other examples
+
+Along the development of this tools, we have tried many different examples by creating a few *Postman* collections. The following list gives some information about each of them, and have a link to visit it:
+* AirQualityCase: A more profound Air Quality Study Case, with a total of 53 requests. [Collection](https://documenter.getpostman.com/view/9546113/TVKA5ees)
+* AirQualityCaseAPIKey: Another implementation of the AirQualityStudyCase, adding the API-Key header. [Collection](https://documenter.getpostman.com/view/9546113/TVKBXcyC)
+* Pocket-CEP-TemperatureCase: A collection to see how the four different windows of *Siddhi* work. [Collection](https://documenter.getpostman.com/view/9546113/TVKBXcyE)
+* Pocket-CEP-StockMarketCase: A collection simulating a stock market scenario, with a variables like the stock value, and its current value. The patterns are simple, and detect cases like a value too high or too low. [Collection](https://documenter.getpostman.com/view/9546113/TVKBXd3a)
+
