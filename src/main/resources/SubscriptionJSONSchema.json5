@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/product.schema.json",
+  "title": "Subscription Schema",
+  "description": "Schema for subscription.",
+  "type": "object",
+  "properties": {
+    "webhook": { "type": "string" },
+    "method": { "type": "string" }
+  },
+  "required": ["webhook", "method"],
+  "additionalProperties": false
+}

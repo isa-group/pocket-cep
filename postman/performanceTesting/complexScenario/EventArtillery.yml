@@ -1,0 +1,20 @@
+config:
+  target: 'http://localhost:9999'
+  http:
+    pool: 5
+  phases:
+    - duration: 300
+      arrivalRate: 400
+  payload:
+    path: "Event.csv"
+    fields:
+      - "index"
+      - "value"
+    order: sequence
+scenarios:
+  - flow:
+    - post:
+        url: "/api/v1/streams/Event/events"
+        json:
+          index: "{{index}}"
+          value: "{{value}}"

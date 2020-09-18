@@ -1,0 +1,4274 @@
+{
+	"info": {
+		"_postman_id": "88b87851-cd6a-4224-90bd-5ff8cf1a9646",
+		"name": "Pocket-CEP-Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Streams",
+			"item": [
+				{
+					"name": "CheckStreamOperationsWorks",
+					"item": [
+						{
+							"name": "Get Streams No Streams",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f2ce4c8a-3aa0-4d6f-889f-7a114a1b08dc",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Body matches string\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"[]\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Input Stream Stock Event",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "dffbab92-4813-4b66-b08e-5af389497673",
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"streamID\": \"StockEvent\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"StockEvent\",\n        \"description\": \"Schema for Stock Event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"symbol\":   { \"type\": \"string\" },\n            \"price\":    { \"type\": \"number\" },\n            \"volume\":   { \"type\": \"number\" }\n        },\n        \"required\": [\"symbol\", \"price\", \"volume\"],\n        \"additionalProperties\": false\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Streams StockEventStream",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6e0e050a-b8cf-4109-a76e-9eaf103b31f1",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Body matches string\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"[\\\"StockEvent\\\"]\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Input Stream",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6098dc22-3e21-4df5-b898-e718e7fa544e",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Body matches string\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"$schema\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams/StockEvent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams",
+										"StockEvent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Input Stream Stock Event",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f75e5694-80a0-4e22-9d3a-7bf0c04112de",
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams/StockEvent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams",
+										"StockEvent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Streams No Streams After Deletion",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "318b44fb-f11e-4353-99c2-4c8f060229f1",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Body matches string\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"[]\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "IsolatedTests",
+					"item": [
+						{
+							"name": "Get More Than One Stream",
+							"item": [
+								{
+									"name": "Add Input Stream StockEvent",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "fb67c08b-610e-47f9-ae49-62fbb9bd248a",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"streamID\": \"StockEvent\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"StockEvent\",\n        \"description\": \"Schema for Stock Event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"symbol\":   { \"type\": \"string\" },\n            \"price\":    { \"type\": \"number\" },\n            \"volume\":   { \"type\": \"number\" }\n        },\n        \"required\": [\"symbol\", \"price\", \"volume\"],\n        \"additionalProperties\": false\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Add Input Stream StockEvent1",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "be0740b9-f5ed-40a4-8b19-a3cc22dfebc3",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "fcabb9e6-4a18-4f99-b85e-8e4cf80af8de",
+												"exec": [
+													"pm.test(\"Status code is 201\", function () {",
+													"    pm.response.to.have.status(201);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"streamID\": \"StockEvent1\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"StockEvent1\",\n        \"description\": \"Schema for Stock1 Event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"symbol\":   { \"type\": \"string\" },\n            \"price\":    { \"type\": \"number\" },\n            \"volume\":   { \"type\": \"number\" }\n        },\n        \"required\": [\"symbol\", \"price\", \"volume\"],\n        \"additionalProperties\": false\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Streams Two Streams",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f9897011-e09f-497c-80c3-456bbd918f9b",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Body matches string\", function () {",
+													"    pm.expect(pm.response.text()).to.include(\"[\\\"StockEvent\\\",\\\"StockEvent1\\\"]\");",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Input Stream StockEvent",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "fe9de170-584e-4516-ab41-e7963a8f16c1",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Body matches string\", function () {",
+													"    pm.expect(pm.response.text()).to.include(\"$schema\");",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Input Stream StockEvent1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "c8b33fe6-786e-41c6-99ca-b47c463ace89",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Body matches string\", function () {",
+													"    pm.expect(pm.response.text()).to.include(\"$schema\");",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Input Stream StockEvent",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "c90ffd54-f9b2-4e78-9001-d12d1cf26f0f",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Input Stream StockEvent1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "7a6e24eb-c77c-47f8-a020-a23c67a93f19",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent1"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Stream Does Not Exist",
+							"item": [
+								{
+									"name": "Get Input Stream Not Exists",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "66077d1b-cb90-420c-830c-50ecf5627c71",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Duplicated Stream",
+							"item": [
+								{
+									"name": "Add Input Stream StockEvent",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "38cfd507-30a2-42d9-b12f-26551a680fb3",
+												"exec": [
+													"pm.test(\"Successful POST request\", function () {",
+													"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"streamID\": \"StockEvent\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"StockEvent\",\n        \"description\": \"Schema for Stock Event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"symbol\":   { \"type\": \"string\" },\n            \"price\":    { \"type\": \"number\" },\n            \"volume\":   { \"type\": \"number\" }\n        },\n        \"required\": [\"symbol\", \"price\", \"volume\"],\n        \"additionalProperties\": false\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Add Input Stream StockEvent Duplicated Error",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d2a279ca-4bca-47aa-8eb9-759936149069",
+												"exec": [
+													"pm.test(\"Successful POST request\", function () {",
+													"    pm.expect(pm.response.code).to.be.oneOf([400]);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"streamID\": \"StockEvent\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"StockEvent\",\n        \"description\": \"Schema for Stock Event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"symbol\":   { \"type\": \"string\" },\n            \"price\":    { \"type\": \"number\" },\n            \"volume\":   { \"type\": \"number\" }\n        },\n        \"required\": [\"symbol\", \"price\", \"volume\"],\n        \"additionalProperties\": false\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Input Stream Stock Event",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "9e98b079-2523-4eb8-a5b8-f9037d2bc053",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "SendEvent",
+							"item": [
+								{
+									"name": "Add Input Stream Stock Event",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "5fbe0628-aa85-4b4b-a53b-672090bb752c",
+												"exec": [
+													"pm.test(\"Successful POST request\", function () {",
+													"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"streamID\": \"StockEvent\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"StockEvent\",\n        \"description\": \"Schema for Stock Event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"symbol\":   { \"type\": \"string\" },\n            \"price\":    { \"type\": \"number\" },\n            \"volume\":   { \"type\": \"number\" }\n        },\n        \"required\": [\"symbol\", \"price\", \"volume\"],\n        \"additionalProperties\": false\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Send Event",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "900e20d9-c541-4499-9ddf-ec35d6715686",
+												"exec": [
+													"pm.test(\"Successful POST request\", function () {",
+													"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"price\": 100.0,\n\t\"volume\": 100.0,\n\t\"symbol\": \"IBM\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:9999/api/v1/streams/StockEvent/events",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Input Stream Stock Event",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d1cae111-c621-469f-a683-1b5984dd4af1",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "SendEventIncorrectFormat",
+							"item": [
+								{
+									"name": "Add Input Stream Stock Event",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "241fd72a-32c5-481e-a0fc-e53dd7665427",
+												"exec": [
+													"pm.test(\"Successful POST request\", function () {",
+													"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"streamID\": \"StockEvent\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"StockEvent\",\n        \"description\": \"Schema for Stock Event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"symbol\":   { \"type\": \"string\" },\n            \"price\":    { \"type\": \"number\" },\n            \"volume\":   { \"type\": \"number\" }\n        },\n        \"required\": [\"symbol\", \"price\", \"volume\"],\n        \"additionalProperties\": false\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Send Event Incorrect Event",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "93015192-d7d7-469e-ac18-de88cfeb0d16",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"symbol\": \"IBM\",\n\t\"price\": 100,\n\t\"volume\": 100,\n\t\"fail\": true\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:9999/api/v1/streams/StockEvent/events",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Input Stream Stock Event",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "ea009886-1536-4189-a773-5b2dbbeb3c75",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Send Event No Stream Found",
+							"item": [
+								{
+									"name": "Send Event",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "97a9955c-043e-41fc-bd51-e672ca349df1",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"price\": 100.0,\n\t\"volume\": 100.0,\n\t\"symbol\": \"IBM\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "localhost:9999/api/v1/streams/StockEvent/events",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Stream Delete Not Found",
+							"item": [
+								{
+									"name": "Delete Input Stream Stock Event Not Found",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "336843e3-3809-4b21-8a2a-8603e8e4c181",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Patterns",
+			"item": [
+				{
+					"name": "NecessaryOperationPriorTestingPatterns",
+					"item": [
+						{
+							"name": "Add Input Stream Stock Event",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "81782814-bcfc-40ce-adb0-f34b297778a6",
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"streamID\": \"StockEvent\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"StockEvent\",\n        \"description\": \"Schema for Stock Event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"symbol\":   { \"type\": \"string\" },\n            \"price\":    { \"type\": \"number\" },\n            \"volume\":   { \"type\": \"number\" }\n        },\n        \"required\": [\"symbol\", \"price\", \"volume\"],\n        \"additionalProperties\": false\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Input Stream StockEvent1",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e48fe4a1-68a5-4553-94fd-2bc90f09db2d",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "1d7bd992-2fa3-4255-bb05-811a1a915d12",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"streamID\": \"StockEvent1\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"StockEvent1\",\n        \"description\": \"Schema for Stock1 Event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"symbol\":   { \"type\": \"string\" },\n            \"price\":    { \"type\": \"number\" },\n            \"volume\":   { \"type\": \"number\" }\n        },\n        \"required\": [\"symbol\", \"price\", \"volume\"],\n        \"additionalProperties\": false\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Output Stream",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cdf71526-4085-44d0-88e3-f169c35cc5dc",
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"streamID\": \"AggregateStockStream\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"AggregateStockStream\",\n        \"description\": \"Schema for AggregateStockStream Event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"symbol\":   { \"type\": \"string\" },\n            \"price\":    { \"type\": \"number\" },\n            \"volume\":   { \"type\": \"number\" }\n        },\n        \"required\": [\"symbol\", \"price\", \"volume\"],\n        \"additionalProperties\": false\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Output Stream Aggregation1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "39270ed7-8c4c-4df8-8eec-387c30ca07ef",
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"streamID\": \"AggregateStockStream1\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"AggregateStockStream1\",\n        \"description\": \"Schema for AggregateStockStream Event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"symbol\":   { \"type\": \"string\" },\n            \"price\":    { \"type\": \"number\" },\n            \"volume\":   { \"type\": \"number\" }\n        },\n        \"required\": [\"symbol\", \"price\", \"volume\"],\n        \"additionalProperties\": false\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "BasicOperations",
+					"item": [
+						{
+							"name": "Get Patterns",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fa90402c-9ef9-4147-bbf3-49fa9ab9d7fe",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9999/api/v1/patterns",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"patterns"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Pattern StockAggregationPattern",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7d8d4f88-82b5-4554-88e5-5cceea78a46a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "08742261-6ec6-485b-a0b8-05413010bf52",
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/patterns",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"patterns"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Patterns 1 Pattern",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bf406a0a-ead3-448c-a263-0e33f1137e1f",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Body matches string\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"patternName\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9999/api/v1/patterns",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"patterns"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Patterns StockAggregationPattern",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"patterns",
+										"StockAggregationPattern"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Patterns StockAggregationPattern",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f46fb0ce-94f3-4b29-9992-144d010ca520",
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"patterns",
+										"StockAggregationPattern"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "IsolatedTests",
+					"item": [
+						{
+							"name": "StreamCannotBeDeletedBecauseIsBeingUsed",
+							"item": [
+								{
+									"name": "Create Pattern StockAggregationPattern",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "e18f205e-43b0-4774-a48f-83dbf2be8a14",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "593c9652-3e6d-41d4-9417-1416418b0ffa",
+												"exec": [
+													"pm.test(\"Successful POST request\", function () {",
+													"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Input Stream Stock Event",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "e6e84d63-6c87-427e-9d85-08b2d6aa7087",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Input Stream AggregateStockStream",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "9e48956b-8fa1-4c1b-ac5c-55dfde64d5b0",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/AggregateStockStream",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"AggregateStockStream"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Patterns StockAggregationPattern",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "c413b3a8-e7d7-490d-a2e9-5fccddb9579e",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Create Pattern Wrong Format",
+							"item": [
+								{
+									"name": "Create Pattern StockAggregationPattern",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "7371f3c7-765a-410e-b570-f551fab8df3a",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "752ef6c2-e288-46ca-8eb7-7a9a6176523f",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "DuplicatedPattern",
+							"item": [
+								{
+									"name": "Create Pattern StockAggregationPattern",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "1c2f80cf-a777-4818-9bcb-80f609c5f27f",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "14f4cd6a-d396-4bc9-a2a1-1533535b1d6f",
+												"exec": [
+													"pm.test(\"Successful POST request\", function () {",
+													"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Pattern StockAggregationPattern Error Duplicated",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "10932ef9-1c7b-46ac-9b07-5a1c1c7a3751",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "afe1ebd8-b236-4c09-a61f-0155975beaf5",
+												"exec": [
+													"pm.test(\"Successful POST request\", function () {",
+													"    pm.expect(pm.response.code).to.be.oneOf([400]);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Patterns StockAggregationPattern",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4bf6e477-5693-4e6c-8c6f-d1456dcc0670",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Patterns",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4874b446-1db5-4256-abb3-2df8a330e1e8",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Body matches string\", function () {",
+													"    pm.expect(pm.response.text()).to.include(\"[]\");",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "WrongCodePattern",
+							"item": [
+								{
+									"name": "Create Pattern StockAggregationPattern Wrong Code",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "d59102bc-df3f-4028-b3d7-ff7052eddb06",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "7f9674a1-63a7-4a22-96a1-e4d8eeb51fdc",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#windo.time(5 sec) select sum(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Patterns",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d9973f08-e293-409d-994a-1eabf96f554a",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Body matches string\", function () {",
+													"    pm.expect(pm.response.text()).to.include(\"[]\");",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "CreatePatternMissingProperties",
+							"item": [
+								{
+									"name": "Create Pattern No Price",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4922abd0-ffd1-4c05-be8c-ac2bd5a6d363",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"Stock aggregation pattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume) as volume, symbol, group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Pattern No symbol",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "028b97a3-df4d-4697-a622-a4ac2d442542",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"Stock aggregation pattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume) as volume, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Pattern Wrong Structure",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "8a28a091-14d0-42fb-8478-bc38dc79b2ba",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "b9615e89-6af2-4c4c-92ca-80c49087fb82",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"Stock aggregation pattern\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Patterns",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "5c2e65f7-1070-4a14-a32e-75e598a045aa",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Body matches string\", function () {",
+													"    pm.expect(pm.response.text()).to.include(\"[]\");",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Update Works",
+							"item": [
+								{
+									"name": "Create Pattern StockAggregationPattern",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "c7fafeeb-bfe9-4236-b0a5-d404c2d33948",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "e8298dbc-f2be-486e-aafb-48d82fe411b0",
+												"exec": [
+													"pm.test(\"Successful POST request\", function () {",
+													"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Pattern Code",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "8f2d666e-a500-4aa8-8c07-a4d5f9867dfe",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume)+1 as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Pattern Input Stream",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b088748c-330e-4479-bf82-abdadf8a5fc1",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent1\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent1#window.time(5 sec) select sum(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Pattern Output Stream",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "151f1af4-28f4-4e5c-966f-09c7feaa2ae4",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream1\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Patterns StockAggregationPattern",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "709833e8-fa3e-4385-9b8c-8a8eac24a270",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "SearchIdNotFound",
+							"item": [
+								{
+									"name": "Get Patterns StockAggregationPattern Not found",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "1826e8f7-ca00-46aa-a8b2-8146be754b87",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Update Fails Not Found",
+							"item": [
+								{
+									"name": "Create Pattern StockAggregationPattern",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "e1c85cd3-57f3-401e-9906-0e1ae7751a08",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "7c84cf61-9b20-4887-9dda-99a8a2e6a286",
+												"exec": [
+													"pm.test(\"Successful POST request\", function () {",
+													"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Pattern Code No ID found",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "875b0e93-f25a-4d36-8670-295681ed6630",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume)+1 as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationlattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationlattern"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Pattern Input Stream Missing Not Introduced",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "3a78be2c-9377-4464-9046-2a1d88af6178",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select su(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Pattern Input Stream Not found",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d395fbcf-29a7-444d-8859-5a82d5dec3d2",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEbent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent1#window.time(5 sec) select sum(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Pattern Input Stream Not found Additional",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "87f691c1-a0c6-4db7-af38-b09272e7fe9b",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\", \"Event2\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent1#window.time(5 sec) select sum(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Pattern Output Stream Not found",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "c9e86df4-78d6-4765-8e2a-2424584bc3c5",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockatream1\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Patterns StockAggregationPattern",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "59220bf8-b8ba-4440-ad5d-51fd3e5123c7",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Patterns",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "0e6147b8-5894-4dc8-aad7-6bdea2817505",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Update Fails Other Fails",
+							"item": [
+								{
+									"name": "Create Pattern StockAggregationPattern",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "5b2f5b6b-131b-430b-9123-4c28064c2b5d",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"id": "665389d1-53f4-43bf-b3bb-cdc995135180",
+												"exec": [
+													"pm.test(\"Successful POST request\", function () {",
+													"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Pattern Input Stream Wrong Code",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "ceff5bb0-ebef-4d01-b1e2-c868e9e626c6",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select su(volume) as volume, symbol, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Pattern Input Stream Missing Property",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "fa2e5b48-aad4-41f4-b031-7b2fe98e7177",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"patternName\": \"StockAggregationPattern\",\n    \"inputStreamNames\": [\"StockEvent\"],\n    \"outputStreamName\": \"AggregateStockStream\",\n    \"patternCode\": \"from StockEvent#window.time(5 sec) select sum(volume) as volume, sum(price) as price group by symbol\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Patterns StockAggregationPattern",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "5eee50e4-0a7c-43ea-9471-dda938b3cc11",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "DeletionFailsPatternNotFound",
+							"item": [
+								{
+									"name": "Delete Patterns StockAggregationPattern Not found",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "8f7e0de7-4847-4efe-907a-7166d4928759",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9999/api/v1/patterns/StockAggregationPattern",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"patterns",
+												"StockAggregationPattern"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Rollback",
+					"item": [
+						{
+							"name": "Delete Input Stream Stock Event",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "64a1aab9-fdcb-4e06-8257-1ebc29ba39aa",
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams/StockEvent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams",
+										"StockEvent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Input Stream StockEvent1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e9abe445-2373-4820-8751-a398092a6431",
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams/StockEvent1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams",
+										"StockEvent1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Input Stream AggregateStockStream",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5b6f8451-8b7c-40df-aeaa-8e7669e5723f",
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams/AggregateStockStream",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams",
+										"AggregateStockStream"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Input Stream AggregateStockStream1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "274ca7aa-25d2-4e19-ac3a-8a3191f88afe",
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams/AggregateStockStream1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams",
+										"AggregateStockStream1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Subscriptions",
+			"item": [
+				{
+					"name": "NecessaryOperationPriorTestingPatterns",
+					"item": [
+						{
+							"name": "Add Input Stream Stock Event",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "30020da7-0747-491f-bb01-8543c7dc44bf",
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"streamID\": \"StockEvent\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"StockEvent\",\n        \"description\": \"Schema for Stock Event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"symbol\":   { \"type\": \"string\" },\n            \"price\":    { \"type\": \"number\" },\n            \"volume\":   { \"type\": \"number\" }\n        },\n        \"required\": [\"symbol\", \"price\", \"volume\"],\n        \"additionalProperties\": false\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "BasicOperations",
+					"item": [
+						{
+							"name": "Get StockEvent Subscriptions",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0989ec23-95a8-4096-85f3-35ad1acf12af",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Body matches string\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"[]\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams/StockEvent/subscriptions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams",
+										"StockEvent",
+										"subscriptions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Subscription",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5447c17c-d17f-4eac-851c-9bc2cbe687ea",
+										"exec": [
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+											"",
+											"    var jsonData = pm.response.json();",
+											"",
+											"    let lastSubscriptionID = jsonData.identifier;",
+											"",
+											"    pm.environment.set(\"LastSubscriptionID\", lastSubscriptionID);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"webhook\": \"webhookMock\",\n    \"method\": \"POST\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams/StockEvent/subscriptions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams",
+										"StockEvent",
+										"subscriptions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get StockEvent Subscriptions With ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e3f1326d-0b61-438a-9ad6-d0175acb2539",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams/StockEvent/subscriptions/{{LastSubscriptionID}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams",
+										"StockEvent",
+										"subscriptions",
+										"{{LastSubscriptionID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "StockEvent Unsubscribe",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9cc0c37d-2b3d-4fb6-a9c5-341624ed9000",
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams/StockEvent/subscriptions/{{LastSubscriptionID}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams",
+										"StockEvent",
+										"subscriptions",
+										"{{LastSubscriptionID}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get StockEvent Subscriptions",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c1f7c9f1-faba-4cd4-9876-91da6a132b07",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Body matches string\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"[]\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams/StockEvent/subscriptions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams",
+										"StockEvent",
+										"subscriptions"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "IsolatedTests",
+					"item": [
+						{
+							"name": "Update Subscription Successful",
+							"item": [
+								{
+									"name": "Create Subscription",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d4a6ed01-3f53-4a2c-8278-4d252b9ab117",
+												"exec": [
+													"pm.test(\"Successful POST request\", function () {",
+													"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+													"",
+													"    var jsonData = pm.response.json();",
+													"",
+													"    let lastSubscriptionID = jsonData.identifier;",
+													"",
+													"    pm.environment.set(\"LastSubscriptionID\", lastSubscriptionID);",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"webhook\": \"webhookMock\",\n    \"method\": \"POST\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent/subscriptions",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent",
+												"subscriptions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Subscription",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "545cac12-f3a7-4639-b615-f3fb59e6a6db",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"identifier\": \"{{LastSubscriptionID}}\",\n    \"webhook\": \"webhookMockUpdated\",\n    \"method\": \"GET\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent/subscriptions/{{LastSubscriptionID}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent",
+												"subscriptions",
+												"{{LastSubscriptionID}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "StockEvent Unsubscribe",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "0ddd2e03-07ea-4174-a390-b1f2c3380c37",
+												"exec": [
+													"pm.test(\"Status code is 204\", function () {",
+													"    pm.response.to.have.status(204);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent/subscriptions/{{LastSubscriptionID}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent",
+												"subscriptions",
+												"{{LastSubscriptionID}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "StreamNotFound",
+							"item": [
+								{
+									"name": "Get StockEvent Subscriptions Copy",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "710d7306-784e-41ec-b76c-4147d982ec87",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockNotEvent/subscriptions",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockNotEvent",
+												"subscriptions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Subscription Stream Not Found",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3ce5671-4272-44d7-abe3-7081536f8ce6",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"webhook\": \"webhookMock\",\n    \"method\": \"POST\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockNotEvent/subscriptions",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockNotEvent",
+												"subscriptions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get StockNotEvent Subscriptions It does not exists",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2107e3f3-40fe-4b6b-968d-6d315febf516",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockNotEvent/subscriptions",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockNotEvent",
+												"subscriptions"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Subscription Stream Not Found",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "43582c09-25eb-49cd-b2d2-05b1bef12ec1",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"identifier\": \"{{LastSubscriptionID}}\",\n    \"webhook\": \"webhookMockUpdated\",\n    \"method\": \"GET\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockNotEvent/subscriptions/{{LastSubscriptionID}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockNotEvent",
+												"subscriptions",
+												"{{LastSubscriptionID}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "StockEvent Unsubscribe Stream Not Found",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "3ccf51ef-2110-49ca-a9dc-a72be0714985",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent/subscriptions/{{LastSubscriptionID}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent",
+												"subscriptions",
+												"{{LastSubscriptionID}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "SubscriptionNotFound",
+							"item": [
+								{
+									"name": "Get StockEvent Subscriptions With ID Copy Not Exists",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "defedbd5-24fc-499a-b80e-9a8ad2c3f123",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent/subscriptions/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent",
+												"subscriptions",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Subscription Subscription Not Found",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4290513f-08ba-4264-a915-f4e0e25b9ded",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"identifier\": \"{{LastSubscriptionID}}\",\n    \"webhook\": \"webhookMockUpdated\",\n    \"method\": \"GET\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent/subscriptions/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent",
+												"subscriptions",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "StockEvent Unsubscribe Subscription Not Found",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a9504545-69e2-4f4f-b104-48d5eaa34a90",
+												"exec": [
+													"pm.test(\"Status code is 404\", function () {",
+													"    pm.response.to.have.status(404);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9999/api/v1/streams/StockEvent/subscriptions/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9999",
+											"path": [
+												"api",
+												"v1",
+												"streams",
+												"StockEvent",
+												"subscriptions",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Rollback",
+					"item": [
+						{
+							"name": "Delete Input Stream Stock Event",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0658a90f-8a8d-4267-abba-4b7c679bfa22",
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9999/api/v1/streams/StockEvent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9999",
+									"path": [
+										"api",
+										"v1",
+										"streams",
+										"StockEvent"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e3419ac3-80d2-43a7-bb35-ae1169199b5d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "09b9cbe7-a65e-4bda-8724-942f7d7c7587",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

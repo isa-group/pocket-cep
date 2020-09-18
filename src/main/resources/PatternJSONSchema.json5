@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/product.schema.json",
+    "title": "Pattern Schema",
+    "description": "Schema for pattern.",
+    "type": "object",
+    "properties": {
+      "patternName": { "type": "string" },
+      "inputStreamName": { "type": "array", "items": {"type": "string"}},
+      "outputStreamName": { "type": "string" },
+      "patternCode": { "type": "string" }
+    },
+    "required": ["patternName", "inputStreamName", "outputStreamName", "patternCode"],
+    "additionalProperties": false
+}

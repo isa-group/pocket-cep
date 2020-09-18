@@ -1,0 +1,637 @@
+{
+	"info": {
+		"_postman_id": "bdccbf15-4470-4fc0-8233-f50720667445",
+		"name": "Pocket-CEP-TemperatureCase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Structure",
+			"item": [
+				{
+					"name": "TempStream",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"streamID\": \"TempStream\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"TempStream\",\n        \"description\": \"Schema for Temperature event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"deviceID\": { \"type\": \"integer\" },\n            \"roomNo\": { \"type\": \"integer\" },\n            \"temp\": { \"type\": \"number\" }\n        },\n        \"required\": [\"deviceID\", \"roomNo\", \"temp\"],\n        \"additionalProperties\": false\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/v1/streams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MaxTempForSliding",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"streamID\": \"MaxTempSliding\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"MaxTempSliding\",\n        \"description\": \"Schema for Max Temperature Sliding Window event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"typeWindow\": {\"type\": \"string\"},\n            \"maxTemp\": { \"type\": \"number\"}\n        },\n        \"required\": [\"typeWindow\", \"maxTemp\"],\n        \"additionalProperties\": false\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/v1/streams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MaxTempForSlidingTime",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"streamID\": \"MaxTempSlidingTime\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"MaxTempSlidingTime\",\n        \"description\": \"Schema for Max Temperature Sliding Window event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"typeWindow\": {\"type\": \"string\"},\n            \"maxTemp\": { \"type\": \"number\"}\n        },\n        \"required\": [\"typeWindow\", \"maxTemp\"],\n        \"additionalProperties\": false\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/v1/streams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MaxTempForBatch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"streamID\": \"MaxTempBatch\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"MaxTempBatch\",\n        \"description\": \"Schema for Max Temperature Batch Window event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"typeWindow\": {\"type\": \"string\"},\n            \"maxTemp\": { \"type\": \"number\"}\n        },\n        \"required\": [\"typeWindow\", \"maxTemp\"],\n        \"additionalProperties\": false\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/v1/streams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MaxTempForBatchTime",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"streamID\": \"MaxTempBatchTime\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"MaxTempBatchTime\",\n        \"description\": \"Schema for Max Temperature Batch Window event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"typeWindow\": {\"type\": \"string\"},\n            \"maxTemp\": { \"type\": \"number\"}\n        },\n        \"required\": [\"typeWindow\", \"maxTemp\"],\n        \"additionalProperties\": false\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/v1/streams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MaxTempSlidingPattern",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patternName\": \"MaxTempSlidingPattern\",\n    \"inputStreamNames\": [\"TempStream\"],\n    \"outputStreamName\": \"MaxTempSliding\",\n    \"patternCode\": \"from TempStream#window.length(10) select 'sliding' as typeWindow, max(temp) as maxTemp\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/v1/patterns",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"patterns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MaxTempSlidingTimePattern",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patternName\": \"MaxTempSlidingTimePattern\",\n    \"inputStreamNames\": [\"TempStream\"],\n    \"outputStreamName\": \"MaxTempSlidingTime\",\n    \"patternCode\": \"from TempStream#window.time(10 sec) select 'slidingTime' as typeWindow, max(temp) as maxTemp\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/v1/patterns",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"patterns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MaxTempBatchPattern",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patternName\": \"MaxTempBatchPattern\",\n    \"inputStreamNames\": [\"TempStream\"],\n    \"outputStreamName\": \"MaxTempBatch\",\n    \"patternCode\": \"from TempStream#window.lengthBatch(10) select 'batch' as typeWindow, max(temp) as maxTemp\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/v1/patterns",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"patterns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MaxTempBatchTimePattern",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patternName\": \"MaxTempBatchTimePattern\",\n    \"inputStreamNames\": [\"TempStream\"],\n    \"outputStreamName\": \"MaxTempBatchTime\",\n    \"patternCode\": \"from TempStream#window.timeBatch(10 sec) select 'batchTime' as typeWindow, max(temp) as maxTemp\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/v1/patterns",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"patterns"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MaxTempForSliding Subscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"webhook\": \"https://api-echo.herokuapp.com/echo/{{APIEcho}}\",\n    \"method\": \"POST\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/v1/streams/MaxTempSliding/subscriptions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams",
+								"MaxTempSliding",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MaxTempForSlidingTime Subscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"webhook\": \"https://api-echo.herokuapp.com/echo/{{APIEcho}}\",\n    \"method\": \"POST\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/v1/streams/MaxTempSlidingTime/subscriptions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams",
+								"MaxTempSlidingTime",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MaxTempForBatch Subscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"webhook\": \"https://api-echo.herokuapp.com/echo/{{APIEcho}}\",\n    \"method\": \"POST\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/v1/streams/MaxTempBatch/subscriptions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams",
+								"MaxTempBatch",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MaxTempForBatchTime Subscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"webhook\": \"https://api-echo.herokuapp.com/echo/{{APIEcho}}\",\n    \"method\": \"POST\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/api/v1/streams/MaxTempBatchTime/subscriptions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams",
+								"MaxTempBatchTime",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "TempStream Event 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deviceID\": 2,\n    \"roomNo\": 11,\n    \"temp\": 26.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/api/v1/streams/TempStream/events",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams",
+								"TempStream",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TempStream Event 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deviceID\": 1,\n    \"roomNo\": 8,\n    \"temp\": 12.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/api/v1/streams/TempStream/events",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams",
+								"TempStream",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TempStream Event 3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deviceID\": 2,\n    \"roomNo\": 11,\n    \"temp\": 34.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/api/v1/streams/TempStream/events",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams",
+								"TempStream",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TempStream Event 4",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deviceID\": 1,\n    \"roomNo\": 8,\n    \"temp\": 8.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/api/v1/streams/TempStream/events",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams",
+								"TempStream",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TempStream Event Still To Finish",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deviceID\": 2.0,\n    \"roomNo\": 11,\n    \"temp\": 26.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/api/v1/streams/TempStream/events",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams",
+								"TempStream",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TempStream Event Still To Finish",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deviceID\": 2.0,\n    \"roomNo\": 11,\n    \"temp\": 26.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/api/v1/streams/TempStream/events",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams",
+								"TempStream",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TempStream Event Still To Finish",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deviceID\": 2.0,\n    \"roomNo\": 11,\n    \"temp\": 26.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9999/api/v1/streams/TempStream/events",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"api",
+								"v1",
+								"streams",
+								"TempStream",
+								"events"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,23 @@
+config:
+  target: 'http://localhost:9999'
+  http:
+    pool: 5
+  phases:
+    - duration: 300
+      arrivalRate: 400
+  payload:
+    path: "Event.csv"
+    fields:
+      - "index"
+      - "value"
+    order: sequence
+  processor: "./function.js"
+scenarios:
+  - flow:
+    - post:
+        url: "/api/v1/streams/EventTimestamp/events"
+        beforeRequest: "getTimestamp"
+        json:
+          index: "{{index}}"
+          value: "{{value}}"
+          timestamp: "{{timestamp}}"

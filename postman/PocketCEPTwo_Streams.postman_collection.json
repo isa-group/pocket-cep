@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "f7cd11e6-cfe0-4895-abda-3d62aaab1f7c",
+		"name": "Pocket-CEP-Two_Streams",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Stream Evento 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"Evento1\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"Evento1\",\n        \"description\": \"Schema for Evento1 event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"ID\": { \"type\": \"integer\" },\n            \"value1\": { \"type\": \"number\" }\n        },\n        \"required\": [\"ID\", \"value1\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Stream Evento 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"Evento2\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"Evento2\",\n        \"description\": \"Schema for Evento2 event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"ID\": { \"type\": \"integer\" },\n            \"value2\": { \"type\": \"number\" }\n        },\n        \"required\": [\"ID\", \"value2\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Stream Join Stream",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"JoinStream\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"JoinStream\",\n        \"description\": \"Schema for JoinStream event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"value\": { \"type\": \"number\" }\n        },\n        \"required\": [\"value\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Pattern Two Input Streams",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"Two streams pattern\",\n    \"inputStreamNames\": [\"Evento1\", \"Evento2\"],\n    \"outputStreamName\": \"JoinStream\",\n    \"patternCode\": \"from (every Evento1) -> Evento2 select Evento1.value1 + Evento2.value2 as value\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns/run",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns",
+						"run"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Join Stream Subscription",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"webhook\": \"https://api-echo.herokuapp.com/echo/{{APIEcho}}\",\n    \"method\": \"POST\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams/JoinStream/subscriptions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams",
+						"JoinStream",
+						"subscriptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Event 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ID\": 1,\n    \"value1\": 10.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9999/api/v1/streams/Evento1/events",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams",
+						"Evento1",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Event 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ID\": 1,\n    \"value2\": 10.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9999/api/v1/streams/Evento2/events",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams",
+						"Evento2",
+						"events"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

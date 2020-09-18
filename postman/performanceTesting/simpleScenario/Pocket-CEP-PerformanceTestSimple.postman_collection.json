@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "f8ec405e-ceeb-42f1-83ce-dd22754b3d2d",
+		"name": "Pocket-CEP-PerformanceTestSimple",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "EventTimestamp Stream",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"EventTimestamp\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"Event\",\n        \"description\": \"Schema for EventTimestamp event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"index\": {\"type\": \"integer\"},\n            \"value\": {\"type\": \"number\"},\n            \"timestamp\": {\"type\": \"integer\"}\n        },\n        \"required\": [\"index\", \"value\", \"timestamp\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FinalEvent Stream",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"FinalEvent\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"Event\",\n        \"description\": \"Schema for FinalEvent event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"value\": {\"type\": \"number\"},\n            \"firstIndex\": {\"type\": \"integer\"},\n            \"lastIndex\": {\"type\": \"integer\"},\n            \"complexEventTimestamp\": {\"type\": \"integer\"}\n        },\n        \"required\": [\"value\", \"firstIndex\", \"lastIndex\", \"complexEventTimestamp\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EventTimestampToFinalEvent pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"EventTimestampToFinalEvent\",\n    \"inputStreamNames\": [\"EventTimestamp\"],\n    \"outputStreamName\": \"FinalEvent\",\n    \"patternCode\": \"from EventTimestamp#window.time(10 sec) select min(index) as firstIndex, max(index) as lastIndex, avg(value) as value, eventTimestamp() as complexEventTimestamp\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FinalEvent Subscription",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"webhook\": \"http://172.17.0.1:8081\",\n    \"method\": \"POST\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams/FinalEvent/subscriptions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams",
+						"FinalEvent",
+						"subscriptions"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2f842814-91dc-494f-9016-f12c555c974a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "14dc47d7-d078-440f-b9c9-9dcf78c36687",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,1638 @@
+{
+	"info": {
+		"_postman_id": "8c6e936a-99ec-473a-b5ff-ad690f716a36",
+		"name": "AirQualityCaseApiKey",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AirMeasurement",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"AirMeasurement\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"AirMeasurement\",\n        \"description\": \"Schema for Air Measurement event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"stationTs\": { \"type\": \"number\" },\n            \"stationId\": { \"type\": \"integer\" },\n            \"pm2_5\": { \"type\": \"number\" },\n            \"pm10\": { \"type\": \"number\" },\n            \"o3\": { \"type\": \"number\" },\n            \"no2\": { \"type\": \"number\" },\n            \"so2\": { \"type\": \"number\" },\n            \"co\": { \"type\": \"number\" }\n        },\n        \"required\": [\"stationTs\", \"stationId\", \"pm2_5\", \"pm10\", \"o3\", \"no2\", \"so2\", \"co\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NO2_Avg",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"NO2_Avg\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"NO2_Avg\",\n        \"description\": \"Schema for NO2_Avg event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"timestamp\": { \"type\": \"number\" },\n            \"stationId\": { \"type\": \"integer\" },\n            \"value\": { \"type\": \"number\" }\n        },\n        \"required\": [\"timestamp\", \"stationId\", \"value\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SO2_Avg",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"SO2_Avg\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"SO2_Avg\",\n        \"description\": \"Schema for SO2_Avg event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"timestamp\": { \"type\": \"number\" },\n            \"stationId\": { \"type\": \"integer\" },\n            \"value\": { \"type\": \"number\" }\n        },\n        \"required\": [\"timestamp\", \"stationId\", \"value\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CO_Avg",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"CO_Avg\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"CO_Avg\",\n        \"description\": \"Schema for CO_Avg event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"timestamp\": { \"type\": \"number\" },\n            \"stationId\": { \"type\": \"integer\" },\n            \"value\": { \"type\": \"number\" }\n        },\n        \"required\": [\"timestamp\", \"stationId\", \"value\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "O3_Avg",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"O3_Avg\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"O3_Avg\",\n        \"description\": \"Schema for O3_Avg event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"timestamp\": { \"type\": \"number\" },\n            \"stationId\": { \"type\": \"integer\" },\n            \"value\": { \"type\": \"number\" }\n        },\n        \"required\": [\"timestamp\", \"stationId\", \"value\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PM2_5_Avg",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"PM2_5_Avg\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"PM2_5_Avg\",\n        \"description\": \"Schema for PM2_5_Avg event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"timestamp\": { \"type\": \"number\" },\n            \"stationId\": { \"type\": \"integer\" },\n            \"value\": { \"type\": \"number\" }\n        },\n        \"required\": [\"timestamp\", \"stationId\", \"value\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PM10_Avg",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"PM10_Avg\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"PM10_Avg\",\n        \"description\": \"Schema for PM10_Avg event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"timestamp\": { \"type\": \"number\" },\n            \"stationId\": { \"type\": \"integer\" },\n            \"value\": { \"type\": \"number\" }\n        },\n        \"required\": [\"timestamp\", \"stationId\", \"value\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"PollutantLevel\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"PollutantLevel\",\n        \"description\": \"Schema for Pollutant Level event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"timestamp\": {\"type\": \"number\"},\n            \"stationId\": { \"type\": \"integer\" },\n            \"levelNumber\": { \"type\": \"number\" },\n            \"levelName\": { \"type\": \"string\" }\n        },\n        \"required\": [\"timestamp\", \"stationId\", \"levelNumber\", \"levelName\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AirQualityLevel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"AirQualityLevel\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"AirQualityLevel\",\n        \"description\": \"Schema for Air Quality event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"timestamp\": {\"type\": \"number\"},\n            \"stationId\": { \"type\": \"integer\" },\n            \"level\": { \"type\": \"number\" }\n        },\n        \"required\": [\"timestamp\", \"stationId\", \"level\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NO2_Avg Pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"NO2_Avg_pattern\",\n    \"inputStreamNames\": [\"AirMeasurement\"],\n    \"outputStreamName\": \"NO2_Avg\",\n    \"patternCode\": \"from AirMeasurement#window.time(1 hour) select eventTimestamp() as timestamp, stationId as stationId, avg(no2) as value group by stationId\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SO2_Avg Pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"SO2_Avg_pattern\",\n    \"inputStreamNames\": [\"AirMeasurement\"],\n    \"outputStreamName\": \"SO2_Avg\",\n    \"patternCode\": \"from AirMeasurement#window.time(1 hour) select eventTimestamp() as timestamp, stationId as stationId, avg(so2) as value group by stationId\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CO_Avg Pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"CO_Avg_pattern\",\n    \"inputStreamNames\": [\"AirMeasurement\"],\n    \"outputStreamName\": \"CO_Avg\",\n    \"patternCode\": \"from AirMeasurement#window.time(8 hours) select eventTimestamp() as timestamp, stationId as stationId, avg(co) as value group by stationId\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "O3_Avg Pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"O3_Avg_pattern\",\n    \"inputStreamNames\": [\"AirMeasurement\"],\n    \"outputStreamName\": \"O3_Avg\",\n    \"patternCode\": \"from AirMeasurement#window.time(8 hours) select eventTimestamp() as timestamp, stationId as stationId, avg(o3) as value \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PM2_5_Avg Pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PM2_5_Avg_pattern\",\n    \"inputStreamNames\": [\"AirMeasurement\"],\n    \"outputStreamName\": \"PM2_5_Avg\",\n    \"patternCode\": \"from AirMeasurement#window.time(24 hours) select eventTimestamp() as timestamp, stationId as stationId, avg(pm2_5) as value group by stationId\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PM10_Avg Pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PM10_Avg_pattern\",\n    \"inputStreamNames\": [\"AirMeasurement\"],\n    \"outputStreamName\": \"PM10_Avg\",\n    \"patternCode\": \"from AirMeasurement#window.time(24 hours) select eventTimestamp() as timestamp, stationId as stationId, avg(pm10) as value group by stationId\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_NO2_Avg_Pattern1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_NO2_Avg_Pattern1\",\n    \"inputStreamNames\": [\"NO2_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = NO2_Avg[(value >= 0 and value < 54)] select timestamp as timestamp, stationId as stationId, 1 as levelNumber, 'NO2_Good' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_NO2_Avg_Pattern2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_NO2_Avg_Pattern2\",\n    \"inputStreamNames\": [\"NO2_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = NO2_Avg [a1.value >= 54 and a1.value < 101] select a1.timestamp as timestamp, a1.stationId as stationId, 2 as levelNumber, 'NO2_Moderate' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_NO2_Avg_Pattern3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_NO2_Avg_Pattern3\",\n    \"inputStreamNames\": [\"NO2_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = NO2_Avg [a1.value >= 101 and a1.value < 361] select a1.timestamp as timestamp, a1.stationId as stationId, 3 as levelNumber, 'NO2_UnhealthyForSensitiveGroups' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_NO2_Avg_Pattern4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_NO2_Avg_Pattern4\",\n    \"inputStreamNames\": [\"NO2_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = NO2_Avg [a1.value >= 361 and a1.value < 650] select a1.timestamp as timestamp, a1.stationId as stationId, 4 as levelNumber, 'NO2_Unhealthy' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_NO2_Avg_Pattern5",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_NO2_Avg_Pattern5\",\n    \"inputStreamNames\": [\"NO2_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = NO2_Avg [a1.value >= 650 and a1.value < 1250] select a1.timestamp as timestamp, a1.stationId as stationId, 5 as levelNumber, 'NO2_VeryUnhealthy' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_NO2_Avg_Pattern6",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_NO2_Avg_Pattern6\",\n    \"inputStreamNames\": [\"NO2_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = NO2_Avg [a1.value >= 1250 and a1.value <= 2049] select a1.timestamp as timestamp, a1.stationId as stationId, 6 as levelNumber, 'NO2_Hazardous' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_SO2_Avg_Pattern1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_SO2_Avg_Pattern1\",\n    \"inputStreamNames\": [\"SO2_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = SO2_Avg [a1.value >= 0 and a1.value < 36] select a1.timestamp as timestamp, a1.stationId as stationId, 1 as levelNumber, 'SO2_Good' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_SO2_Avg_Pattern2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_SO2_Avg_Pattern2\",\n    \"inputStreamNames\": [\"SO2_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = SO2_Avg [a1.value >= 36 and a1.value < 76] select a1.timestamp as timestamp, a1.stationId as stationId, 2 as levelNumber, 'SO2_Moderate' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_SO2_Avg_Pattern3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_SO2_Avg_Pattern3\",\n    \"inputStreamNames\": [\"SO2_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = SO2_Avg [a1.value >= 76 and a1.value < 186] select a1.timestamp as timestamp, a1.stationId as stationId, 3 as levelNumber, 'SO2_UnhealthyForSensitiveGroups' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_SO2_Avg_Pattern4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_SO2_Avg_Pattern4\",\n    \"inputStreamNames\": [\"SO2_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = SO2_Avg [a1.value >= 186 and a1.value < 305] select a1.timestamp as timestamp, a1.stationId as stationId, 4 as levelNumber,'SO2_Unhealthy' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_SO2_Avg_Pattern5",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_SO2_Avg_Pattern5\",\n    \"inputStreamNames\": [\"SO2_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = SO2_Avg [a1.value >= 305 and a1.value < 605] select a1.timestamp as timestamp, a1.stationId as stationId, 5 as levelNumber, 'SO2_VeryUnhealthy' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_SO2_Avg_Pattern6",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_SO2_Avg_Pattern6\",\n    \"inputStreamNames\": [\"SO2_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = SO2_Avg [a1.value >= 605 and a1.value <= 1004] select a1.timestamp as timestamp, a1.stationId as stationId, 6 as levelNumber, 'SO2_Hazardous' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_CO_Avg_Pattern1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_CO_Avg_Pattern1\",\n    \"inputStreamNames\": [\"CO_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = CO_Avg [a1.value >= 0 and a1.value < 4.5] select a1.timestamp as timestamp, a1.stationId as stationId, 1 as levelNumber, 'CO_Good' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_CO_Avg_Pattern2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_CO_Avg_Pattern2\",\n    \"inputStreamNames\": [\"CO_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = CO_Avg [a1.value >= 4.5 and a1.value < 9.5] select a1.timestamp as timestamp, a1.stationId as stationId, 2 as levelNumber, 'CO_Moderate' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_CO_Avg_Pattern3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_CO_Avg_Pattern3\",\n    \"inputStreamNames\": [\"CO_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = CO_Avg [a1.value >= 9.5 and a1.value < 12.5] select a1.timestamp as timestamp, a1.stationId as stationId, 3 as levelNumber, 'CO_UnhealthyForSensitiveGroups' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_CO_Avg_Pattern4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_CO_Avg_Pattern4\",\n    \"inputStreamNames\": [\"CO_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = CO_Avg [a1.value >= 12.5 and a1.value < 15.5] select a1.timestamp as timestamp, a1.stationId as stationId, 4 as levelNumber, 'CO_Unhealthy' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_CO_Avg_Pattern5",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_CO_Avg_Pattern5\",\n    \"inputStreamNames\": [\"CO_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = CO_Avg [a1.value >= 15.5 and a1.value < 30.5] select a1.timestamp as timestamp, a1.stationId as stationId, 5 as levelNumber, 'CO_VeryUnhealthy' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_CO_Avg_Pattern6",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_CO_Avg_Pattern6\",\n    \"inputStreamNames\": [\"CO_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = CO_Avg [a1.value >= 30.5 and a1.value <= 50.4] select a1.timestamp as timestamp, a1.stationId as stationId, 6 as levelNumber, 'CO_Hazardous' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_O3_Avg_Pattern1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_O3_Avg_Pattern1\",\n    \"inputStreamNames\": [\"O3_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = O3_Avg [a1.value >= 0 and a1.value < 0.055] select a1.timestamp as timestamp, a1.stationId as stationId, 1 as levelNumber, 'O3_Good' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_O3_Avg_Pattern2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_O3_Avg_Pattern2\",\n    \"inputStreamNames\": [\"O3_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = O3_Avg [a1.value >= 0.055 and a1.value < 0.071] select a1.timestamp as timestamp, a1.stationId as stationId, 2 as levelNumber, 'O3_Moderate' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_O3_Avg_Pattern3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_O3_Avg_Pattern3\",\n    \"inputStreamNames\": [\"O3_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = O3_Avg [a1.value >= 0.071 and a1.value < 0.086] select a1.timestamp as timestamp, a1.stationId as stationId, 3 as levelNumber, 'O3_UnhealthyForSensitiveGroups' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_O3_Avg_Pattern4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_O3_Avg_Pattern4\",\n    \"inputStreamNames\": [\"O3_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = O3_Avg [a1.value >= 0.086 and a1.value < 0.106] select a1.timestamp as timestamp, a1.stationId as stationId, 4 as levelNumber, 'O3_Unhealthy' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_O3_Avg_Pattern5",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_O3_Avg_Pattern5\",\n    \"inputStreamNames\": [\"O3_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = O3_Avg [a1.value >= 0.106 and a1.value < 0.200] select a1.timestamp as timestamp, a1.stationId as stationId, 5 as levelNumber, 'O3_VeryUnhealthy' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_O3_Avg_Pattern6",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_O3_Avg_Pattern6\",\n    \"inputStreamNames\": [\"O3_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = O3_Avg [a1.value >= 0.200] select a1.timestamp as timestamp, a1.stationId as stationId, 6 as levelNumber, 'O3_Hazardous' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_PM2_5_Avg_Pattern1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_PM2_5_Avg_Pattern1\",\n    \"inputStreamNames\": [\"PM2_5_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = PM2_5_Avg [a1.value >= 0 and a1.value < 12.1] select a1.timestamp as timestamp, a1.stationId as stationId, 1 as levelNumber, 'PM2_5_Good' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_PM2_5_Avg_Pattern2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_PM2_5_Avg_Pattern2\",\n    \"inputStreamNames\": [\"PM2_5_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = PM2_5_Avg [a1.value >= 12.1 and a1.value < 35.5] select a1.timestamp as timestamp, a1.stationId as stationId, 2 as levelNumber, 'PM2_5_Moderate' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_PM2_5_Avg_Pattern3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_PM2_5_Avg_Pattern3\",\n    \"inputStreamNames\": [\"PM2_5_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = PM2_5_Avg [a1.value >= 35.5 and a1.value < 55.5] select a1.timestamp as timestamp, a1.stationId as stationId, 3 as levelNumber, 'PM2_5_UnhealthyForSensitiveGroups' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_PM2_5_Avg_Pattern4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_PM2_5_Avg_Pattern4\",\n    \"inputStreamNames\": [\"PM2_5_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = PM2_5_Avg [a1.value >= 55.5 and a1.value < 150.5] select a1.timestamp as timestamp, a1.stationId as stationId, 4 as levelNumber, 'PM2_5_Unhealthy' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_PM2_5_Avg_Pattern5",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_PM2_5_Avg_Pattern5\",\n    \"inputStreamNames\": [\"PM2_5_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = PM2_5_Avg [a1.value >= 150.5 and a1.value < 250.5] select a1.timestamp as timestamp, a1.stationId as stationId, 5 as levelNumber, 'PM2_5_VeryUnhealthy' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_PM2_5_Avg_Pattern6",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_PM2_5_Avg_Pattern6\",\n    \"inputStreamNames\": [\"PM2_5_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = PM2_5_Avg [a1.value >= 250.5 and a1.value <= 500.4] select a1.timestamp as timestamp, a1.stationId as stationId, 6 as levelNumber, 'PM2_5_Hazardous' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_PM10_Avg_Pattern1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_PM10_Avg_Pattern1\",\n    \"inputStreamNames\": [\"PM10_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = PM10_Avg [a1.value >= 0 and a1.value < 55] select a1.timestamp as timestamp, a1.stationId as stationId, 1 as levelNumber, 'PM10_Good' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_PM10_Avg_Pattern2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_PM10_Avg_Pattern2\",\n    \"inputStreamNames\": [\"PM10_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = PM10_Avg [a1.value >= 55 and a1.value < 155] select a1.timestamp as timestamp, a1.stationId as stationId, 2 as levelNumber, 'PM10_Moderate' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_PM10_Avg_Pattern3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_PM10_Avg_Pattern3\",\n    \"inputStreamNames\": [\"PM10_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = PM10_Avg [a1.value >= 155 and a1.value < 255] select a1.timestamp as timestamp, a1.stationId as stationId, 3 as levelNumber, 'PM10_UnhealthyForSensitiveGroups' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_PM10_Avg_Pattern4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_PM10_Avg_Pattern4\",\n    \"inputStreamNames\": [\"PM10_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = PM10_Avg [a1.value >= 255 and a1.value < 355] select a1.timestamp as timestamp, a1.stationId as stationId, 4 as levelNumber, 'PM10_Unhealthy' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_PM10_Avg_Pattern5",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_PM10_Avg_Pattern5\",\n    \"inputStreamNames\": [\"PM10_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = PM10_Avg [a1.value >= 355 and a1.value < 425] select a1.timestamp as timestamp, a1.stationId as stationId, 5 as levelNumber, 'PM10_VeryUnhealthy' as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel_PM10_Avg_Pattern6",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel_PM10_Avg_Pattern6\",\n    \"inputStreamNames\": [\"PM10_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \"from every a1 = PM10_Avg [a1.value >= 425 and a1.value <= 604] select a1.timestamp as timestamp, a1.stationId as stationId, 6 as levelNumber, 'PM10_Hazardous' as levelName \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AirQualityLevel Pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"AirQualityLevel pattern\",\n    \"inputStreamNames\": [\"PollutantLevel\"],\n    \"outputStreamName\": \"AirQualityLevel\",\n    \"patternCode\": \"from PollutantLevel#window.timeBatch(10 seconds) select eventTimestamp() as timestamp, stationId as stationId, max(levelNumber) as level group by stationId\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AirMeasurement Event",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"stationTs\": 2.0,\n    \"stationId\": 1,\n    \"pm2_5\": 10.0,\n    \"pm10\": 10.0,\n    \"o3\": 10.0,\n    \"no2\": 100.0,\n    \"so2\": 10.0,\n    \"co\": 10.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9999/api/v1/streams/AirMeasurement/events",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams",
+						"AirMeasurement",
+						"events"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "X-API-Key",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "f694fd7a-dcb3-4dbe-8723-dd85ffb2d007",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f51fd2a3-9e22-4f7b-a2aa-e6691175b0eb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "23260b69-0587-4bdb-8fc4-6bd60aad63e9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

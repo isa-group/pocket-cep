@@ -1,0 +1,501 @@
+{
+	"info": {
+		"_postman_id": "1bb93da0-a3b7-45ea-89d8-b9127c2182c2",
+		"name": "Pocket-CEP-AirQualityCase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AirMesurement",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"AirMesurement\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"AirMesurement\",\n        \"description\": \"Schema for Air Mesurement event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"timestamp\": { \"type\": \"number\" },\n            \"stationID\": { \"type\": \"integer\" },\n            \"location\": { \"type\": \"string\" },\n            \"pm2_5\": { \"type\": \"number\" },\n            \"pm10\": { \"type\": \"number\" },\n            \"o3\": { \"type\": \"number\" },\n            \"no2\": { \"type\": \"number\" },\n            \"so2\": { \"type\": \"number\" },\n            \"co\": { \"type\": \"number\" }\n        },\n        \"required\": [\"timestamp\", \"stationID\", \"location\", \"pm2_5\", \"pm10\", \"o3\", \"no2\", \"so2\", \"co\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AirMesurement Subscription",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"webhook\": \"https://api-echo.herokuapp.com/echo/{{APIEcho}}\",\n    \"method\": \"POST\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams/AirMesurement/subscriptions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams",
+						"AirMesurement",
+						"subscriptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NO2_Avg Window",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"NO2_Avg_window\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"NO2_Avg_window\",\n        \"description\": \"Schema for NO2 Window event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"stationId\": { \"type\": \"integer\" },\n            \"value\": { \"type\": \"number\" }\n        },\n        \"required\": [\"stationId\", \"value\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NO2_Avg",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"NO2_Avg\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"NO2_Avg\",\n        \"description\": \"Schema for NO2_Avg event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"stationId\": { \"type\": \"integer\" },\n            \"value\": { \"type\": \"number\" }\n        },\n        \"required\": [\"stationId\", \"value\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NO2_Avg Subscription",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"webhook\": \"https://api-echo.herokuapp.com/echo/{{APIEcho}}\",\n    \"method\": \"POST\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams/NO2_Avg/subscriptions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams",
+						"NO2_Avg",
+						"subscriptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"PollutantLevel\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"PollutantLevel\",\n        \"description\": \"Schema for Pollutant Level event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"stationId\": { \"type\": \"integer\" },\n            \"levelNumber\": { \"type\": \"number\" },\n            \"levelName\": { \"type\": \"string\" }\n        },\n        \"required\": [\"stationId\", \"levelNumber\", \"levelName\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel Subscription",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"webhook\": \"https://api-echo.herokuapp.com/echo/{{APIEcho}}\",\n    \"method\": \"POST\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams/PollutantLevel/subscriptions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams",
+						"PollutantLevel",
+						"subscriptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AirQualityLevel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"streamID\": \"AirQualityLevel\",\n    \"jsonSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n        \"$id\": \"http://example.com/product.schema.json\",\n        \"title\": \"AirQualityLevel\",\n        \"description\": \"Schema for Air Quality event\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"stationId\": { \"type\": \"integer\" },\n            \"level\": { \"type\": \"number\" }\n        },\n        \"required\": [\"stationId\", \"level\"],\n        \"additionalProperties\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AirQualityLevel Subscription",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"webhook\": \"https://api-echo.herokuapp.com/echo/{{APIEcho}}\",\n    \"method\": \"POST\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/streams/AirQualityLevel/subscriptions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams",
+						"AirQualityLevel",
+						"subscriptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NO2_Avg Window",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"NO2_Avg_window\",\n    \"inputStreamNames\": [\"AirMesurement\"],\n    \"outputStreamName\": \"NO2_Avg_window\",\n    \"patternCode\": \"from AirMesurement#window.time(5 sec) select stationID as stationId, avg(no2) as value group by stationID\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NO2_Avg Pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"NO2_Avg_pattern\",\n    \"inputStreamNames\": [\"NO2_Avg_window\"],\n    \"outputStreamName\": \"NO2_Avg\",\n    \"patternCode\": \"from (every a1 = NO2_Avg_window) select a1.stationId as stationId, value as value\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PollutantLevel Pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"PollutantLevel pattern\",\n    \"inputStreamNames\": [\"NO2_Avg\"],\n    \"outputStreamName\": \"PollutantLevel\",\n    \"patternCode\": \" from (every a1 = NO2_Avg[(a1.value >= 0.0 and a1.value < 54.0)]) select a1.stationId as stationId, 1.0 as levelNumber, \\\"NO2_Good\\\" as levelName\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AirQualityLevel Pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"patternName\": \"AirQualityLevel pattern\",\n    \"inputStreamNames\": [\"PollutantLevel\"],\n    \"outputStreamName\": \"AirQualityLevel\",\n    \"patternCode\": \"from (every a1 = PollutantLevel) select a1.stationId as stationId, max(a1.levelNumber) as level group by a1.stationId\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/api/v1/patterns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"patterns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AirMesurement Event 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"timestamp\": 2.0,\n    \"stationID\": 1,\n    \"location\": \"Cadiz\",\n    \"pm2_5\": 10.0,\n    \"pm10\": 10.0,\n    \"o3\": 10.0,\n    \"no2\": 10.0,\n    \"so2\": 10.0,\n    \"co\": 10.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9999/api/v1/streams/AirMesurement/events",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams",
+						"AirMesurement",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AirMesurement Event 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"timestamp\": 2.0,\n    \"stationID\": 1,\n    \"location\": \"Cadiz\",\n    \"pm2_5\": 10.0,\n    \"pm10\": 10.0,\n    \"o3\": 10.0,\n    \"no2\": 50.0,\n    \"so2\": 10.0,\n    \"co\": 10.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9999/api/v1/streams/AirMesurement/events",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams",
+						"AirMesurement",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AirMesurement Event 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"timestamp\": 2.0,\n    \"stationID\": 1,\n    \"location\": \"Cadiz\",\n    \"pm2_5\": 10.0,\n    \"pm10\": 10.0,\n    \"o3\": 10.0,\n    \"no2\": 100.0,\n    \"so2\": 10.0,\n    \"co\": 10.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9999/api/v1/streams/AirMesurement/events",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"api",
+						"v1",
+						"streams",
+						"AirMesurement",
+						"events"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
