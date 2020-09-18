@@ -26,7 +26,7 @@ A minimum complete and functional application must have two streams, one for inp
 To run a minimun example, you can just run the following commands:
 
 ```
-npx degit https://github.com/JsAntoPe/Pocket-CEP/postman simpleExample
+npx degit https://github.com/isa-group/pocket-cep/postman simpleExample
 npx newman run simpleExample/PocketCEPAirQualityCase.postman_collection.json
 ```
 
@@ -34,25 +34,25 @@ The postman collection used in this example: [Postman Collection](https://docume
 
 The example above will run a total of 5 streams, 4 patterns , 4 subscriptions and 3 events sent to the first stream *Air Mesurement*.
 
-The different components of the system are explained in full detail on the wiki section *[How it works](https://github.com/JsAntoPe/Pocket-CEP/wiki/How-it-works).
+The different components of the system are explained in full detail on the wiki section *[How it works](https://github.com/isa-group/pocket-cep/wiki/How-it-works).
 
 Pocket-CEP is a microservice, therefore, it works under the REST protocol. All the operations have been documented following the OpenAPI Specification. It can be found here: [Pocket-CEP OpenAPI Specification](https://app.swaggerhub.com/apis/JsAntoPe/pocket-cep/0.8.0).
 
-In case you want to see an example of each element, see the wiki section *[Examples](https://github.com/JsAntoPe/Pocket-CEP/wiki/Examples).
+In case you want to see an example of each element, see the wiki section *[Examples](https://github.com/isa-group/pocket-cep/wiki/Examples).
 
 ## Testing
 
 For testing the service, I have used Postman, writing http requests. In case you want to run the tests, you can use this next command:
 
 ```
-npx degit https://github.com/JsAntoPe/Pocket-CEP/postman simpleExample
+npx degit https://github.com/isa-group/pocket-cep/postman simpleExample
 npx newman run simpleExample/PocketCEPTesting.postman_collection.json
 ```
 Postman collection used in the testing part: [Postman Collection](https://documenter.getpostman.com/view/9546113/T1DmEyqo).
 
 ### Performance Testing
 
-In case you want to perform a performance testing, you can follow the steps in this [file](https://github.com/JsAntoPe/Pocket-CEP/blob/master/performance.md).
+In case you want to perform a performance testing, you can follow the steps in this [file](https://github.com/isa-group/pocket-cep/blob/master/performance.md).
 
 ### Other examples
 
