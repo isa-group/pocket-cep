@@ -3,7 +3,7 @@ package com.siddhiApi.inMemoryStorage;
 import com.siddhiApi.entity.Subscription;
 import com.siddhiApi.exceptions.NotFoundException;
 import io.siddhi.query.api.expression.condition.Not;
-import org.omg.CosNaming.NamingContextPackage.NotFound;
+//import org.omg.CosNaming.NamingContextPackage.NotFound;
 
 import java.util.*;
 
