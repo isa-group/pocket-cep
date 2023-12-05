@@ -16,7 +16,7 @@ This project can be useful for anyone thinking on testing a fast changing comple
 Pocket-CEP can only be run in a docker container. It is recommended that you run Pocket-CEP as a daemon. In order to run an instance, use the following command:
 
 ```
-docker run -d -p 9999:9999 jsantope/pocket-cep
+docker run -d -p 9999:9999 isa-group/pocket-cep
 ```
 
 ## Getting Started
