@@ -34,11 +34,10 @@ The postman collection used in this example: [Postman Collection](https://docume
 
 The example above will run a total of 5 streams, 4 patterns , 4 subscriptions and 3 events sent to the first stream *Air Mesurement*.
 
-The different components of the system are explained in full detail on the wiki section *[How it works](https://github.com/isa-group/pocket-cep/wiki/How-it-works).
+The different components of the system are explained on the wiki section *[How it works](https://github.com/isa-group/pocket-cep/wiki/How-it-works)*.
 
 Pocket-CEP is a microservice, therefore, it works under the REST protocol. All the operations have been documented following the OpenAPI Specification. It can be found here: [Pocket-CEP OpenAPI Specification](https://app.swaggerhub.com/apis/JsAntoPe/pocket-cep/0.8.0-oas3).
 
-In case you want to see an example of each element, see the wiki section *[Examples](https://github.com/isa-group/pocket-cep/wiki/Examples).
 
 ## Testing
 
